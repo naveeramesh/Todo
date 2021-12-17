@@ -1,4 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:todo_app/constants/colors.dart';
+import 'package:todo_app/constants/text.dart';
+
+import 'Auth/Signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +34,15 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    Timer(
+        Duration(seconds: 3),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (b) => Signup())));
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -35,6 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           Center(
             child: Container(
+              height: 200,
               child: Image.asset("assets/images/logo.png"),
             ),
           ),
