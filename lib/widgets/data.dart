@@ -6,12 +6,12 @@ class Items {
 
 List<Items> data_list = [
   Items(
-    "assets/images/cook.png",
+    "https://image.freepik.com/free-vector/list-concept-illustration_114360-1320.jpg",
   ),
   Items(
-    'assets/images/delivery.png',
+    'https://image.freepik.com/free-vector/reading-list-concept-illustration_114360-1053.jpg',
   ),
   Items(
-    "assets/images/offer.png",
+    "https://image.freepik.com/free-vector/accept-tasks-concept-illustration_114360-4866.jpg",
   ),
 ];

@@ -24,12 +24,10 @@ class _Page_ViewState extends State<Page_View> {
       ),
       Container(
           height: MediaQuery.of(context).size.height / 2.5,
-          child: Image.asset(widget.items.imageurl)),
+          child: Image.network(widget.items.imageurl)),
       SizedBox(
         height: 30,
       ),
-     
-     
     ]);
   }
 }
