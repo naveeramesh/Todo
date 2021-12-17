@@ -14,6 +14,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  bool isloading = false;
   int _currentpg = 0;
   PageController _controller = PageController();
   @override
@@ -77,6 +78,10 @@ class _SignupState extends State<Signup> {
               padding: const EdgeInsets.all(20.0),
               child: GestureDetector(
                 onTap: () {
+                  setState(() {
+                    isloading = true;
+                  });
+                  
                   signin().whenComplete(() {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (b) => HomeScreen()));
