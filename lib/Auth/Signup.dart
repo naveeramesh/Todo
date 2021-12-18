@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/Auth/google_signin.dart';
 import 'package:todo_app/Main/homescreen.dart';
@@ -14,7 +16,7 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-
+  FirebaseAuth _auth = FirebaseAuth.instance;
   int _currentpg = 0;
   PageController _controller = PageController();
   @override
@@ -79,16 +81,23 @@ class _SignupState extends State<Signup> {
               child: GestureDetector(
                 onTap: () {
                   signin().whenComplete(() {
+                    if (_auth.currentUser?.email != null) {
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (b) => HomeScreen()));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        backgroundColor: Colors.grey,
+                        content: Helper.text("Signin to use application", 15, 0,
+                            Colors.black, FontWeight.normal)));
+                  }
                   });
+                  
                 },
                 child: Container(
                   height: 60,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Colors.blue,
-                      borderRadius: BorderRadius.circular(10)),
+                      color: appcolor, borderRadius: BorderRadius.circular(10)),
                   child: Center(
                     child: Helper.text("Signin with Google", 20, 0,
                         Colors.white, FontWeight.bold),
