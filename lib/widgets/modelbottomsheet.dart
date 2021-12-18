@@ -42,7 +42,7 @@ class _modelsheetState extends State<modelsheet> {
             padding: const EdgeInsets.all(20.0),
             child: GestureDetector(
               onTap: () {
-                addWork(_auth.currentUser!.uid).whenComplete(() {
+                addWork().whenComplete(() {
                   Navigator.pop(context);
                 });
               },
@@ -63,8 +63,8 @@ class _modelsheetState extends State<modelsheet> {
     );
   }
 
-  Future<void> addWork(String uid) async {
-    FirebaseFirestore.instance.collection("Task").doc(uid).set({
+  Future<void> addWork() async {
+    FirebaseFirestore.instance.collection("Task").add({
       "taskname": workcontroller.text.trim(),
       "schedule": schedulecontroller.text.trim(),
     });

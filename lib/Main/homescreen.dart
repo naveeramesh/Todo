@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_app/Main/taskview.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/constants/text.dart';
 import 'package:todo_app/widgets/modelbottomsheet.dart';
@@ -13,7 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  
   FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      body: TaskView(),
     );
   }
 }
