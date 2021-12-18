@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/constants/text.dart';
 
 class TaskView extends StatefulWidget {
@@ -38,7 +39,26 @@ class _TaskViewState extends State<TaskView> {
                         children: [
                           Helper.text(snapshot.data!.docs[index]['taskname'],
                               20, 0, Colors.black, FontWeight.bold),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.cancel))
+                          IconButton(
+                              onPressed: () {
+                                FirebaseFirestore.instance
+                                    .collection('Task')
+                                    .doc(snapshot.data!.docs[index]['time'])
+                                    .delete()
+                                    .whenComplete(() {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                        backgroundColor: appcolor,
+                                        content: Helper.text(
+                                            "You have completed you task",
+                                            15,
+                                            0,
+                                            Colors.white,
+                                            FontWeight.bold)),
+                                  );
+                                });
+                              },
+                              icon: Icon(Icons.cancel))
                         ],
                       ),
                     ),
