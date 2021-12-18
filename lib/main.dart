@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/constants/colors.dart';
 import 'package:todo_app/constants/text.dart';
 
 import 'Auth/Signup.dart';
+import 'Main/homescreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
+ 
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -36,12 +39,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+   FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     Timer(
         Duration(seconds: 3),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (b) => Signup())));
+            context, MaterialPageRoute(
+                builder: (b) => _auth.currentUser?.uid == null
+                    ? Signup()
+                    : HomeScreen())));
     super.initState();
   }
 
