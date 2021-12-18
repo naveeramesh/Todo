@@ -50,7 +50,7 @@ class _TaskViewState extends State<TaskView> {
                                     SnackBar(
                                         backgroundColor: appcolor,
                                         content: Helper.text(
-                                            "You have completed you task",
+                                            "You have completed your task",
                                             15,
                                             0,
                                             Colors.white,
