@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
 }
 
 class SplashScreen extends StatefulWidget {
- 
   const SplashScreen({Key? key}) : super(key: key);
 
   @override
@@ -39,16 +38,16 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-   FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
   @override
   void initState() {
     Timer(
         Duration(seconds: 3),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(
-                builder: (b) => _auth.currentUser?.uid == null
-                    ? Signup()
-                    : HomeScreen())));
+            context,
+            MaterialPageRoute(
+                builder: (b) =>
+                    _auth.currentUser?.uid == null ? Signup() : HomeScreen())));
     super.initState();
   }
 

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/constants/colors.dart';
@@ -14,6 +16,7 @@ class modelsheet extends StatefulWidget {
 }
 
 class _modelsheetState extends State<modelsheet> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController workcontroller = TextEditingController();
   TextEditingController schedulecontroller = TextEditingController();
   @override
@@ -21,44 +24,49 @@ class _modelsheetState extends State<modelsheet> {
     return Container(
       height: MediaQuery.of(context).size.height / 2,
       child: new Container(
-          decoration: new BoxDecoration(
-              color: Colors.white,
-              borderRadius: new BorderRadius.only(
-                  topLeft: const Radius.circular(20.0),
-                  topRight: const Radius.circular(20.0))),
           child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              TextField_Custom(
-                  text: "Enter your work for today",
-                  controller: workcontroller,
-                  width: MediaQuery.of(context).size.width),
-              TextField_Custom(
-                  text: "Schedule to complete",
-                  controller: schedulecontroller,
-                  width: MediaQuery.of(context).size.width),
-              Spacer(),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 60,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: appcolor,
-                        borderRadius: BorderRadius.circular(10)),
-                    child: Center(
-                      child: Helper.text("Add your work", 20, 0, Colors.white,
-                          FontWeight.bold),
-                    ),
-                  ),
+        children: [
+          SizedBox(
+            height: 30,
+          ),
+          TextField_Custom(
+              text: "Enter your work for today",
+              controller: workcontroller,
+              width: MediaQuery.of(context).size.width),
+          TextField_Custom(
+              text: "Schedule to complete",
+              controller: schedulecontroller,
+              width: MediaQuery.of(context).size.width),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: GestureDetector(
+              onTap: () {
+                addWork(_auth.currentUser!.uid).whenComplete(() {
+                  Navigator.pop(context);
+                });
+              },
+              child: Container(
+                height: 60,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: appcolor, borderRadius: BorderRadius.circular(10)),
+                child: Center(
+                  child: Helper.text(
+                      "Add your work", 20, 0, Colors.white, FontWeight.bold),
                 ),
               ),
-            ],
-          )),
+            ),
+          ),
+        ],
+      )),
     );
+  }
+
+  Future<void> addWork(String uid) async {
+    FirebaseFirestore.instance.collection("Task").doc(uid).set({
+      "taskname": workcontroller.text.trim(),
+      "schedule": schedulecontroller.text.trim(),
+    });
   }
 }
