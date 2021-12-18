@@ -10,6 +10,7 @@ class TaskView extends StatefulWidget {
 }
 
 class _TaskViewState extends State<TaskView> {
+  ObjectKey? _value;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -22,23 +23,27 @@ class _TaskViewState extends State<TaskView> {
             return Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20, top: 10),
               child: Container(
-                height: 80,
+                height: MediaQuery.of(context).size.height / 9,
                 width: MediaQuery.of(context).size.width,
-                decoration:
-                    BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(10)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Helper.text(snapshot.data!.docs[index]['taskname'],
-                          20, 0, Colors.black, FontWeight.bold),
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Helper.text(snapshot.data!.docs[index]['taskname'],
+                              20, 0, Colors.black, FontWeight.bold),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.cancel))
+                        ],
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0,bottom: 8),
+                      padding: const EdgeInsets.only(left: 8.0, bottom: 8),
                       child: Helper.text(snapshot.data!.docs[index]['schedule'],
                           20, 0, Colors.grey, FontWeight.bold),
                     ),

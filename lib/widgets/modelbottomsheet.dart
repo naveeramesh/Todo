@@ -16,6 +16,7 @@ class modelsheet extends StatefulWidget {
 }
 
 class _modelsheetState extends State<modelsheet> {
+  DateTime? currenttime = DateTime.now();
   FirebaseAuth _auth = FirebaseAuth.instance;
   TextEditingController workcontroller = TextEditingController();
   TextEditingController schedulecontroller = TextEditingController();
@@ -64,9 +65,13 @@ class _modelsheetState extends State<modelsheet> {
   }
 
   Future<void> addWork() async {
-    FirebaseFirestore.instance.collection("Task").add({
+    FirebaseFirestore.instance
+        .collection("Task")
+        .doc(currenttime.toString())
+        .set({
       "taskname": workcontroller.text.trim(),
       "schedule": schedulecontroller.text.trim(),
+      "time": currenttime.toString()
     });
   }
 }
