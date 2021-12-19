@@ -1,16 +1,19 @@
-# todo_app
+# Todo 📑🚩
 
-A new Flutter project.
+## 📌 Introduction 
+Todo is an Simple Task Management App coded using Dart which is a peogramming language for Flutter SDK(2.5) supports Null Safety.
+This app works with Clean UI enhanced with Backend Support - Firebase.It's showcase the list of daily task which we have to do 
+primarily and after completion of the task you can mark them completed.
+This app carries a Google Authentication and a Main Screen to upload your daily task .
 
-## Getting Started
+## 🏃‍♂️ Local Installation
 
-This project is a starting point for a Flutter application.
+1. Drop a ⭐ on the Github Repository. 
+2. Fork the repository 
+3. Clone the Repo by going to your local Git Client and pushing in the command: 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```sh
+https://github.com/naveeramesh/Todo.git
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
