@@ -33,7 +33,7 @@ class _SignupState extends State<Signup> {
                   GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (b) => Signup()));
+                            MaterialPageRoute(builder: (b) => HomeScreen()));
                       },
                       child: Helper.text(
                           "Skip", 15, 0, Colors.black, FontWeight.normal))

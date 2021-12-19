@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/constants/text.dart';
-
 import 'data.dart';
 
 class Page_View extends StatefulWidget {
