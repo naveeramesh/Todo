@@ -82,16 +82,15 @@ class _SignupState extends State<Signup> {
                 onTap: () {
                   signin().whenComplete(() {
                     if (_auth.currentUser?.email != null) {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (b) => HomeScreen()));
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        backgroundColor: Colors.grey,
-                        content: Helper.text("Signin to use application", 15, 0,
-                            Colors.black, FontWeight.normal)));
-                  }
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (b) => HomeScreen()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          backgroundColor: Colors.grey,
+                          content: Helper.text("Signin to use application", 15,
+                              0, Colors.black, FontWeight.normal)));
+                    }
                   });
-                  
                 },
                 child: Container(
                   height: 60,
