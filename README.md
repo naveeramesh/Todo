@@ -14,10 +14,17 @@ There are three components
 1. ChangeNotifier.
 2. ChangeNotifierProvider
 3. Consumer
+#### Provider package 
+```sh
+provider: ^6.0.1
+```
+Move to corresponding provider branch using the below command also check [pub.dev](https://pub.dev/packages/provider) for documentation.
+
+
 ```sh
 git checkout Provider
 ```
-Move to corresponding provider branch and use the Run command
+
 ## ℹ️ Local Installation
 
 1. Drop a ⭐ on the Github Repository. 
