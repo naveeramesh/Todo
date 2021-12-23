@@ -6,7 +6,19 @@ This app works with Clean UI enhanced with Backend Support - Firebase.It's showc
 primarily and after completion of the task you can mark them completed.
 This app carries a Google Authentication and a Main Screen to upload your daily task .
 
-## 🏃‍♂️ Local Installation
+
+## 👩‍💻Provider
+Provider State Management, which is recommended by Flutter as well,The main purpose is to manage the states and it also acts as a center of functions.
+#### Provider Components
+There are three components 
+1. ChangeNotifier.
+2. ChangeNotifierProvider
+3. Consumer
+```sh
+git checkout Provider
+```
+Move to corresponding provider branch and use the Run command
+## ℹ️ Local Installation
 
 1. Drop a ⭐ on the Github Repository. 
 2. Fork the repository 
@@ -16,4 +28,8 @@ This app carries a Google Authentication and a Main Screen to upload your daily 
 ```sh
 https://github.com/naveeramesh/Todo.git
 ```
-
+## 🏃‍♀️How to run
+```sh
+flutter pub get
+flutter run
+```
