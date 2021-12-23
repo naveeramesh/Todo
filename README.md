@@ -1,7 +1,7 @@
 # Todo 📑🚩
 
 ## 📌 Introduction 
-Todo is an Simple Task Management App coded using Dart which is a peogramming language for Flutter SDK(2.5) supports Null Safety.
+Todo is an Simple Task Management App coded using Dart which is a programming language for Flutter SDK(2.5) supports Null Safety.
 This app works with Clean UI enhanced with Backend Support - Firebase.It's showcase the list of daily task which we have to do 
 primarily and after completion of the task you can mark them completed.
 This app carries a Google Authentication and a Main Screen to upload your daily task .
