@@ -24,7 +24,11 @@ class Home extends StatelessWidget {
               borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
             ),
             builder: (context) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Helper.text("Enter your tasks below", 20, 0, Colors.black,
+                    FontWeight.bold),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
@@ -132,16 +136,27 @@ class Home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20.0, bottom: 10),
-                        child: Consumer<TodoNotifier>(
-                          builder: (context, value, child) => Helper.text(
-                              "Task : ${value.itemlist[index].task}",
-                              18,
-                              0,
-                              Colors.black,
-                              FontWeight.normal),
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(left: 20.0, bottom: 10),
+                            child: Consumer<TodoNotifier>(
+                              builder: (context, value, child) => Helper.text(
+                                  "Task : ${value.itemlist[index].task}",
+                                  18,
+                                  0,
+                                  Colors.black,
+                                  FontWeight.normal),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                todoNotifier.deleteUser(index);
+                              },
+                              icon: Icon(Icons.delete))
+                        ],
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 20.0),
